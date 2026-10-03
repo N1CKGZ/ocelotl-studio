@@ -1,11 +1,12 @@
 /**
  * Ocelotl Studio Interactive Engine
- * Handles navigation, interactive device showcase, and developer console
+ * Handles navigation, interactive device showcase, code manifest typing animation, and developer console
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
   initKronexShowcase();
+  initManifestTypingAnimation();
   initInteractiveTerminal();
   initYear();
 });
@@ -76,6 +77,185 @@ function initKronexShowcase() {
       }
     });
   });
+}
+
+/* --------------------------------------------------------------------------
+   Technical Manifest Code Typing Animation
+   -------------------------------------------------------------------------- */
+function initManifestTypingAnimation() {
+  const codeBlock = document.getElementById('manifestCodeBlock');
+  const metrics = document.getElementById('manifestMetrics');
+  const dashboard = document.querySelector('.hero-dashboard');
+
+  if (!codeBlock || !dashboard) return;
+
+  // Respect prefers-reduced-motion
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) {
+    if (metrics) metrics.classList.add('revealed');
+    return;
+  }
+
+  const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+  const manifestRows = [
+    {
+      isIndent: false,
+      tokens: [
+        { text: "const ", className: "token-keyword" },
+        { text: "studioManifest", className: "token-variable" },
+        { text: " = {" }
+      ]
+    },
+    {
+      isIndent: true,
+      tokens: [
+        { text: "entity: ", className: "token-property" },
+        { text: '"Ocelotl Studio"', className: "token-string" },
+        { text: "," }
+      ]
+    },
+    {
+      isIndent: true,
+      tokens: [
+        { text: "origin: ", className: "token-property" },
+        { text: '"Estado de Guerrero, México"', className: "token-string" },
+        { text: "," }
+      ]
+    },
+    {
+      isIndent: true,
+      tokens: [
+        { text: "focus: ", className: "token-property" },
+        { text: '"Digital Architecture & High Performance Software"', className: "token-string" },
+        { text: "," }
+      ]
+    },
+    {
+      isIndent: true,
+      tokens: [
+        { text: "coreDisciplines: ", className: "token-property" },
+        { text: "[" },
+        { text: '"Mobile Engineering"', className: "token-string" },
+        { text: ", " },
+        { text: '"Cloud Architecture"', className: "token-string" },
+        { text: ", " },
+        { text: '"Applied AI"', className: "token-string" },
+        { text: "]," }
+      ]
+    },
+    {
+      isIndent: true,
+      tokens: [
+        { text: "flagshipSystem: ", className: "token-property" },
+        { text: '"Kronex Academic OS"', className: "token-link", href: "https://kronexacademic.com" },
+        { text: "," }
+      ]
+    },
+    {
+      isIndent: true,
+      tokens: [
+        { text: "engineeringStandard: ", className: "token-property" },
+        { text: '"High Concurrency & Zero Technical Debt"', className: "token-accent" }
+      ]
+    },
+    {
+      isIndent: false,
+      tokens: [
+        { text: "};" }
+      ]
+    }
+  ];
+
+  let hasStarted = false;
+
+  async function startTyping() {
+    if (hasStarted) return;
+    hasStarted = true;
+
+    // Clear existing static HTML
+    codeBlock.innerHTML = '';
+
+    // Create cursor element
+    const cursor = document.createElement('span');
+    cursor.className = 'manifest-cursor';
+    cursor.setAttribute('aria-hidden', 'true');
+
+    for (const row of manifestRows) {
+      const p = document.createElement('p');
+      p.className = `code-row ${row.isIndent ? 'code-indent' : ''}`;
+      codeBlock.appendChild(p);
+
+      // Append cursor to current line
+      p.appendChild(cursor);
+
+      for (const token of row.tokens) {
+        let targetEl;
+        if (token.href) {
+          const a = document.createElement('a');
+          a.href = token.href;
+          a.target = '_blank';
+          a.rel = 'noopener';
+          const span = document.createElement('span');
+          span.className = token.className || '';
+          a.appendChild(span);
+          p.insertBefore(a, cursor);
+          targetEl = span;
+        } else if (token.className) {
+          const span = document.createElement('span');
+          span.className = token.className;
+          p.insertBefore(span, cursor);
+          targetEl = span;
+        } else {
+          const span = document.createElement('span');
+          p.insertBefore(span, cursor);
+          targetEl = span;
+        }
+
+        // Type character by character
+        for (let i = 0; i < token.text.length; i++) {
+          targetEl.textContent += token.text[i];
+          // Fast, precise technical cadence
+          await wait(14);
+        }
+      }
+
+      // Micro pause at line break
+      await wait(35);
+    }
+
+    // Finished typing: Reveal metrics with subtle upward fade
+    if (metrics) {
+      await wait(120);
+      metrics.classList.add('revealed');
+    }
+
+    // Keep cursor blinking softly then fade out after 2.5s
+    setTimeout(() => {
+      cursor.classList.add('fade-out');
+      setTimeout(() => cursor.remove(), 600);
+    }, 2500);
+  }
+
+  // Observe when the hero dashboard enters the viewport
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          observer.unobserve(dashboard);
+          startTyping();
+        }
+      });
+    }, {
+      threshold: 0.25,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    observer.observe(dashboard);
+  } else {
+    // Fallback for older browsers
+    startTyping();
+  }
 }
 
 /* --------------------------------------------------------------------------
