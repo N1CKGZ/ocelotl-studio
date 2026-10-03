@@ -311,6 +311,7 @@ Comandos disponibles:
   <span class="highlight-cmd">ocelotl</span>    - Significado ancestral y símbolo del jaguar de Guerrero
   <span class="highlight-cmd">kronex</span>     - Especificaciones y arquitectura de Kronex Academic OS
   <span class="highlight-cmd">origen</span>     - Fundación y sede en el estado de Guerrero, México
+  <span class="highlight-cmd">creadores</span>  - Autoría: Nicolas Godinez Santana & Eduardo Godinez Santana
   <span class="highlight-cmd">servicios</span>  - Capacidades de ingeniería móvil, web y cloud
   <span class="highlight-cmd">stack</span>      - Herramientas y tecnologías de producción
   <span class="highlight-cmd">contacto</span>   - Vías formales de comunicación institucional
@@ -339,6 +340,12 @@ Repositorio de releases: <a href="https://github.com/N1CKGZ/kronex-releases" tar
 Ocelotl Studio es un estudio de desarrollo de software y arquitectura digital con sede en el estado de Guerrero, México.
 Bajo una filosofía de rigor técnico y autonomía, el estudio diseña sistemas de alto desempeño
 para el ecosistema local y global sin desvincularse de sus raíces territoriales.
+`,
+    creadores: `
+[AUTORÍA & DIRECCIÓN DE INGENIERÍA]
+• Creadores: Nicolas Godinez Santana • Eduardo Godinez Santana.
+• Raíces: Orgullosos del estado de Guerrero.
+• Misión: Forjar tecnología y software de estándar internacional desde el estado de Guerrero, México.
 `,
     servicios: `
 [DISCIPLINAS DE INGENIERÍA]
