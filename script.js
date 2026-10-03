@@ -18,6 +18,7 @@ function initNavbar() {
   const navbar = document.getElementById('navbar');
   const mobileToggle = document.getElementById('mobileToggle');
   const navMenu = document.getElementById('navMenu');
+  const menuBackdrop = document.getElementById('menuBackdrop');
 
   // Sticky blur on scroll
   window.addEventListener('scroll', () => {
@@ -26,24 +27,59 @@ function initNavbar() {
     } else {
       navbar.classList.remove('scrolled');
     }
-  });
+  }, { passive: true });
+
+  function closeMenu() {
+    if (!navMenu || !mobileToggle) return;
+    mobileToggle.classList.remove('active');
+    navMenu.classList.remove('open');
+    if (menuBackdrop) menuBackdrop.classList.remove('active');
+    document.body.classList.remove('menu-open');
+    mobileToggle.setAttribute('aria-expanded', 'false');
+  }
+
+  function openMenu() {
+    if (!navMenu || !mobileToggle) return;
+    mobileToggle.classList.add('active');
+    navMenu.classList.add('open');
+    if (menuBackdrop) menuBackdrop.classList.add('active');
+    document.body.classList.add('menu-open');
+    mobileToggle.setAttribute('aria-expanded', 'true');
+  }
 
   // Mobile toggle
   if (mobileToggle && navMenu) {
     mobileToggle.addEventListener('click', () => {
-      const isOpen = navMenu.classList.toggle('open');
-      mobileToggle.classList.toggle('active');
-      mobileToggle.setAttribute('aria-expanded', String(isOpen));
+      const isOpen = navMenu.classList.contains('open');
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
     });
 
-    // Close menu when clicking a link
-    navMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileToggle.classList.remove('active');
-        navMenu.classList.remove('open');
-        mobileToggle.setAttribute('aria-expanded', 'false');
-      });
+    if (menuBackdrop) {
+      menuBackdrop.addEventListener('click', closeMenu);
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+        closeMenu();
+      }
     });
+
+    // Close menu when clicking any link inside nav
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Auto-close menu if resizing to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && navMenu.classList.contains('open')) {
+        closeMenu();
+      }
+    }, { passive: true });
   }
 }
 
@@ -247,8 +283,8 @@ function initManifestTypingAnimation() {
         }
       });
     }, {
-      threshold: 0.25,
-      rootMargin: '0px 0px -50px 0px'
+      threshold: 0.12,
+      rootMargin: '0px 0px -20px 0px'
     });
 
     observer.observe(dashboard);
@@ -372,7 +408,9 @@ para el ecosistema local y global sin desvincularse de sus raíces territoriales
       input.value = command;
       executeCommand(command);
       input.value = '';
-      input.focus();
+      if (window.innerWidth > 768) {
+        input.focus();
+      }
     });
   });
 }

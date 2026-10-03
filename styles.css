@@ -1139,11 +1139,13 @@ a.text-link:hover {
 
 .device-container {
   position: relative;
-  width: 280px;
+  width: 100%;
+  max-width: 280px;
 }
 
 .device-chassis {
   position: relative;
+  width: 100%;
   background: #000000;
   border: 8px solid #1E293B;
   border-radius: 40px;
@@ -1759,8 +1761,39 @@ a.text-link:hover {
 }
 
 /* ==========================================================================
+   Mobile Backdrop & Navigation Helpers
+   ========================================================================== */
+.menu-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 90;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-smooth) var(--ease-out);
+}
+
+.menu-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body.menu-open {
+  overflow: hidden;
+  touch-action: none;
+}
+
+.nav-mobile-cta {
+  display: none;
+}
+
+/* ==========================================================================
    Responsive Adaptations
    ========================================================================== */
+
+/* Tablet Landscape & Compact Desktop (<= 1024px) */
 @media (max-width: 1024px) {
   .narrative-split,
   .spotlight-grid,
@@ -1775,10 +1808,15 @@ a.text-link:hover {
   .dashboard-body {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: 28px;
   }
 
   .code-block {
     text-align: left;
+  }
+
+  .emblem-container {
+    margin: 0 auto;
   }
 
   .services-grid {
@@ -1790,13 +1828,31 @@ a.text-link:hover {
   }
 }
 
+/* Tablet Portrait & Large Smartphones (<= 768px) */
 @media (max-width: 768px) {
-  .section {
-    padding: 80px 0;
+  :root {
+    --header-height: 64px;
   }
 
-  .heritage-showcase-card {
-    padding: 32px 20px;
+  .section {
+    padding: 72px 0;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  .section-heading {
+    margin-bottom: 40px;
+  }
+
+  .section-main-title {
+    font-size: clamp(1.8rem, 6vw, 2.4rem);
+    margin-bottom: 14px;
+  }
+
+  .section-lead-text {
+    font-size: 0.98rem;
   }
 
   .header-location {
@@ -1809,15 +1865,21 @@ a.text-link:hover {
     left: 0;
     right: 0;
     background: rgba(8, 11, 17, 0.98);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     border-bottom: 1px solid var(--border-medium);
     flex-direction: column;
-    padding: 28px 24px;
-    gap: 18px;
-    transform: translateY(-150%);
+    padding: 20px 20px 24px;
+    gap: 6px;
+    transform: translateY(-120%);
     opacity: 0;
     pointer-events: none;
-    transition: all var(--duration-smooth) var(--ease-out);
+    transition: transform var(--duration-smooth) var(--ease-out), opacity var(--duration-smooth) var(--ease-out);
+    z-index: 99;
+    max-height: calc(100dvh - var(--header-height));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.85);
   }
 
   .nav.open {
@@ -1826,8 +1888,43 @@ a.text-link:hover {
     pointer-events: auto;
   }
 
+  .nav-link {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 0.98rem;
+    border-radius: var(--radius-xs);
+    min-height: 46px;
+  }
+
+  .nav-link:hover,
+  .nav-link:active {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .nav-mobile-cta {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .nav-mobile-cta .btn {
+    min-height: 48px;
+    font-size: 0.95rem;
+  }
+
   .menu-button {
     display: flex;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-xs);
+  }
+
+  .menu-button:active {
+    background: rgba(255, 255, 255, 0.06);
   }
 
   .menu-button.active .menu-line:nth-child(1) {
@@ -1837,24 +1934,554 @@ a.text-link:hover {
     transform: translateY(-4px) rotate(-45deg);
   }
 
-  .narrative-card,
-  .project-spotlight-card,
-  .standards-shell,
-  .contact-shell {
-    padding: 32px 20px;
+  /* Hero Section */
+  .hero-section {
+    padding: 56px 16px 80px;
+  }
+
+  .hero-heading {
+    font-size: clamp(2rem, 6.8vw, 3rem);
+    margin-bottom: 20px;
+  }
+
+  .hero-lead {
+    font-size: 1.02rem;
+    margin-bottom: 32px;
+  }
+
+  .hero-actions {
+    margin-bottom: 56px;
+  }
+
+  .dashboard-body {
+    padding: 24px 20px;
+  }
+
+  .emblem-container {
+    width: 130px;
+    height: 130px;
+    padding: 14px;
+  }
+
+  .code-block {
+    padding: 16px 14px;
+    font-size: 0.78rem;
+  }
+
+  /* Heritage / Ocelotl */
+  .heritage-showcase-card {
+    padding: 32px 24px;
+  }
+
+  .heritage-top {
+    padding-bottom: 28px;
+    margin-bottom: 32px;
+  }
+
+  .heritage-grid {
+    gap: 28px;
+    margin-bottom: 36px;
+  }
+
+  .heritage-manifesto-footer {
+    padding: 24px 20px;
+  }
+
+  /* Philosophy */
+  .narrative-card {
+    padding: 32px 24px;
+  }
+
+  /* Kronex Spotlight */
+  .project-spotlight-card {
+    padding: 32px 24px;
   }
 
   .specs-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 
+  .device-container {
+    max-width: 260px;
+  }
+
+  /* Services */
+  .service-box {
+    padding: 32px 24px;
+  }
+
+  /* Standards */
+  .standards-shell {
+    padding: 32px 24px;
+  }
+
+  .standards-header {
+    margin-bottom: 32px;
+  }
+
+  /* Developer Console */
+  .console-screen {
+    padding: 18px 16px;
+  }
+
+  /* Contact */
+  .contact-shell {
+    padding: 32px 24px;
+  }
+
+  .inquiry-form {
+    padding: 28px 20px;
+  }
+
+  /* iOS Auto-Zoom Prevention on all inputs & selects */
+  .field-wrap input,
+  .field-wrap select,
+  .field-wrap textarea,
+  .console-input {
+    font-size: 16px !important;
+  }
+
+  /* Footer */
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 36px;
+    padding-bottom: 36px;
   }
 
   .footer-bottom-bar {
     flex-direction: column;
     text-align: center;
+    gap: 14px;
+  }
+}
+
+/* Medium Phones (<= 640px) */
+@media (max-width: 640px) {
+  .header-desktop-cta {
+    display: none;
+  }
+
+  .header-actions {
+    gap: 4px;
+  }
+}
+
+/* Compact Smartphones (<= 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .section {
+    padding: 56px 0;
+  }
+
+  .section-main-title {
+    font-size: clamp(1.65rem, 7.5vw, 2.1rem);
+  }
+
+  /* Hero Section */
+  .hero-section {
+    padding: 36px 14px 56px;
+  }
+
+  .hero-badge {
+    padding: 5px 12px;
+    margin-bottom: 22px;
+    max-width: 100%;
+  }
+
+  .badge-text {
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-heading {
+    font-size: clamp(1.85rem, 8vw, 2.5rem);
+    line-height: 1.16;
+  }
+
+  .hero-lead {
+    font-size: 0.94rem;
+    line-height: 1.58;
+    margin-bottom: 28px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto 36px;
+    gap: 10px;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    min-height: 48px;
+    font-size: 0.92rem;
+    padding: 12px 18px;
+  }
+
+  /* Dashboard Card */
+  .dashboard-topbar {
+    padding: 10px 12px;
+    gap: 6px;
+  }
+
+  .window-title {
+    font-size: 0.68rem;
+    max-width: 145px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .window-status {
+    font-size: 0.6rem;
+  }
+
+  .dashboard-body {
+    padding: 16px 12px;
+    gap: 16px;
+  }
+
+  .emblem-container {
+    width: 96px;
+    height: 96px;
+    padding: 10px;
+  }
+
+  .code-block {
+    padding: 14px 10px;
+    font-size: 0.72rem;
+    line-height: 1.6;
+    overflow-x: auto;
+  }
+
+  .code-row.code-indent {
+    padding-left: 10px;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .metric-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    text-align: left;
+  }
+
+  .metric-value {
+    font-size: 1.05rem;
+    margin-bottom: 0;
+  }
+
+  .metric-description {
+    font-size: 0.72rem;
+  }
+
+  /* Heritage / Ocelotl */
+  .heritage-showcase-card {
+    padding: 22px 14px;
+  }
+
+  .heritage-glyph-badge {
+    padding: 14px;
+  }
+
+  .glyph-word {
+    font-size: 1.45rem;
+  }
+
+  .heritage-prose-lead p {
+    font-size: 0.94rem;
+    line-height: 1.6;
+  }
+
+  .heritage-col-title {
+    font-size: 1.05rem;
+  }
+
+  .heritage-col-desc {
+    font-size: 0.88rem;
+  }
+
+  .heritage-manifesto-footer {
+    padding: 18px 14px;
+    gap: 16px;
+  }
+
+  .manifesto-quote {
+    font-size: 0.88rem;
+    padding-left: 12px;
+  }
+
+  /* Philosophy */
+  .narrative-card {
+    padding: 22px 14px;
+  }
+
+  .bio-heading {
+    font-size: 1.4rem;
+  }
+
+  .narrative-bio p {
+    font-size: 0.92rem;
+    margin-bottom: 14px;
+  }
+
+  .origin-quote-box {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .origin-quote-box p {
+    font-size: 0.86rem;
+  }
+
+  .pillar-block {
+    padding: 16px 14px;
+  }
+
+  .pillar-title {
+    font-size: 1rem;
+  }
+
+  .pillar-text {
+    font-size: 0.86rem;
+  }
+
+  /* Kronex Spotlight */
+  .project-spotlight-card {
+    padding: 22px 14px;
+  }
+
+  .project-title {
+    font-size: 1.4rem;
+  }
+
+  .project-statement {
+    font-size: 1.05rem;
+    margin-bottom: 14px;
+  }
+
+  .project-summary {
+    font-size: 0.9rem;
+    margin-bottom: 22px;
+  }
+
+  .project-ctas {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .project-ctas .btn {
+    width: 100%;
+    min-height: 48px;
+    justify-content: center;
+  }
+
+  .device-switcher {
+    width: 100%;
+    max-width: 260px;
+    margin-bottom: 20px;
+  }
+
+  .switcher-btn {
+    flex: 1;
+    text-align: center;
+    padding: 7px 10px;
+    font-size: 0.76rem;
+  }
+
+  .device-container {
+    max-width: 240px;
+  }
+
+  .device-chassis {
+    border-width: 6px;
+    border-radius: 34px;
+  }
+
+  .device-island {
+    width: 70px;
+    height: 18px;
+    top: 7px;
+  }
+
+  /* Services */
+  .service-box {
+    padding: 24px 16px;
+  }
+
+  .service-box-title {
+    font-size: 1.2rem;
+  }
+
+  .service-box-desc {
+    font-size: 0.88rem;
+    margin-bottom: 20px;
+  }
+
+  /* Standards */
+  .standards-shell {
+    padding: 22px 14px;
+  }
+
+  .standards-title {
+    font-size: 1.4rem;
+  }
+
+  .standards-grid {
+    gap: 20px;
+  }
+
+  /* Developer Console */
+  .console-bar {
+    padding: 8px 12px;
+  }
+
+  .console-caption {
+    font-size: 0.7rem;
+  }
+
+  .console-arch {
+    display: none;
+  }
+
+  .console-screen {
+    padding: 14px 12px;
+    min-height: 200px;
+    max-height: 320px;
+    font-size: 0.78rem;
+  }
+
+  .console-input-line {
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .prompt-symbol {
+    font-size: 0.78rem;
+  }
+
+  .console-input {
+    min-width: 140px;
+  }
+
+  .console-toolbar {
+    padding: 10px 12px;
+    gap: 6px;
+  }
+
+  .toolbar-label {
+    width: 100%;
+    font-size: 0.68rem;
+    margin-bottom: 2px;
+  }
+
+  .terminal-action-btn {
+    font-size: 0.72rem;
+    padding: 6px 10px;
+    min-height: 32px;
+  }
+
+  /* Contact */
+  .contact-shell {
+    padding: 22px 14px;
+  }
+
+  .contact-heading {
+    font-size: 1.35rem;
+  }
+
+  .contact-text {
+    font-size: 0.9rem;
+  }
+
+  .inquiry-form {
+    padding: 18px 14px;
+  }
+
+  .form-heading {
+    font-size: 1.15rem;
+  }
+
+  .field-wrap input,
+  .field-wrap select,
+  .field-wrap textarea {
+    padding: 12px 14px;
+    min-height: 48px;
+  }
+
+  .field-wrap textarea {
+    min-height: 110px;
+  }
+
+  .btn-full {
+    min-height: 48px;
+    font-size: 0.94rem;
+  }
+
+  /* Footer */
+  .site-footer {
+    padding: 40px 0 20px;
+  }
+
+  .footer-desc {
+    font-size: 0.84rem;
+  }
+}
+
+/* Ultra-Compact Mobile Screens (<= 360px, e.g. iPhone SE 1st gen, Galaxy Fold) */
+@media (max-width: 360px) {
+  .header-inner {
+    padding: 0 12px;
+  }
+
+  .brand {
+    gap: 8px;
+  }
+
+  .brand-logo {
+    width: 24px;
+    height: 24px;
+  }
+
+  .brand-name {
+    font-size: 0.88rem;
+  }
+
+  .brand-tag {
+    font-size: 0.58rem;
+  }
+
+  .hero-heading {
+    font-size: 1.65rem;
+  }
+
+  .device-container {
+    max-width: 220px;
+  }
+
+  .window-title {
+    max-width: 110px;
+  }
+
+  .code-block {
+    font-size: 0.68rem;
+    padding: 10px 8px;
+  }
+
+  .code-row.code-indent {
+    padding-left: 8px;
   }
 }
