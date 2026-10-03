@@ -109,10 +109,10 @@ Sitio web oficial: <a href="https://kronexacademic.com" target="_blank" style="c
 Repositorio de releases: <a href="https://github.com/N1CKGZ/kronex-releases" target="_blank" style="color:#60A5FA;text-decoration:underline;">github.com/N1CKGZ/kronex-releases</a>
 `,
     origen: `
-[FUNDACIÓN & SEDE]
-Ocelotl Studio fue fundado por dos hermanos desarrolladores de software en el estado de Guerrero, México.
+[ORIGEN & SEDE]
+Ocelotl Studio es un estudio de desarrollo de software y arquitectura digital con sede en el estado de Guerrero, México.
 Bajo una filosofía de rigor técnico y autonomía, el estudio diseña sistemas de alto desempeño
-para clientes locales y globales sin desvincularse de sus raíces territoriales.
+para el ecosistema local y global sin desvincularse de sus raíces territoriales.
 `,
     servicios: `
 [DISCIPLINAS DE INGENIERÍA]

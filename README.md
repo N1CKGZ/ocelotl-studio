@@ -1,11 +1,11 @@
-# 🐆 Ocelotl Studio — Sitio Web Oficial
+# Ocelotl Studio — Sitio Web Oficial
 
-> Estudio de desarrollo de aplicaciones, ingeniería de software y tecnología fundado por dos hermanos en el **Estado de Guerrero, México**.  
+> Estudio de desarrollo de aplicaciones, ingeniería de software y tecnología con sede en el **Estado de Guerrero, México**.  
 > Dominio oficial: [ocelotl.studio](https://ocelotl.studio)
 
 ---
 
-## 🏛️ Identidad & Filosofía
+## Identidad & Filosofía
 
 **Ocelotl Studio** fusiona la fuerza, perseverancia y agilidad del *Ocelotl* (símbolo ancestral guerrerense) con la vanguardia del desarrollo tecnológico internacional.
 
