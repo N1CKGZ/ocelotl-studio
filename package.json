@@ -1,0 +1,19 @@
+{
+  "name": "ocelotl-studio",
+  "version": "1.0.0",
+  "description": "Sitio web oficial de Ocelotl Studio - Estudio de Desarrollo de Software & Tecnología (Guerrero, México)",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve . -p 3000",
+    "start": "npx serve . -p 3000",
+    "serve": "python3 -m http.server 3000"
+  },
+  "keywords": [
+    "ocelotl-studio",
+    "guerrero",
+    "kronex-academic-os",
+    "software-studio"
+  ],
+  "author": "Ocelotl Studio",
+  "license": "MIT"
+}

@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>Ocelotl Studio | Desarrollo de Software & Apps • Guerrero, México</title>
+  
+  <!-- SEO & Social Meta -->
+  <meta name="description" content="Ocelotl Studio es un estudio de desarrollo de aplicaciones y tecnología fundado por dos hermanos en Guerrero, México. Creadores de Kronex Academic OS.">
+  <meta name="keywords" content="Ocelotl Studio, desarrollo de software Guerrero, desarrollo de apps Mexico, Kronex Academic OS, estudio de tecnología Guerrero, software studio">
+  <meta name="author" content="Ocelotl Studio">
+  
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ocelotl.studio/">
+  <meta property="og:title" content="Ocelotl Studio | Tecnología & Software desde Guerrero">
+  <meta property="og:description" content="Estudio de desarrollo de aplicaciones y tecnología de vanguardia. Creadores de Kronex Academic OS. Con orgullo de Guerrero, México.">
+  <meta property="og:image" content="assets/logo-gold.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ocelotl Studio | Software & Tecnología">
+  <meta name="twitter:description" content="Estudio de desarrollo de software fundado en el estado de Guerrero, México. Creadores de Kronex Academic OS.">
+  <meta name="twitter:image" content="assets/logo-gold.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="ambient-glow ambient-glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow ambient-glow-2" aria-hidden="true"></div>
+  <div class="bg-grid-overlay" aria-hidden="true"></div>
+
+  <!-- Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#inicio" class="brand-link" aria-label="Ir al inicio de Ocelotl Studio">
+        <img src="assets/jaguar-icon-gold.png" alt="Ocelotl Emblem" class="brand-emblem" width="38" height="38">
+        <div class="brand-info">
+          <span class="brand-title">OCELOTL</span>
+          <span class="brand-subtitle">STUDIO</span>
+        </div>
+      </a>
+
+      <div class="location-pill">
+        <span class="status-indicator"></span>
+        <span class="location-text">Guerrero, México</span>
+      </div>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="#inicio" class="nav-item">Inicio</a>
+        <a href="#origen" class="nav-item">Nuestras Raíces</a>
+        <a href="#kronex" class="nav-item nav-item-highlight">
+          <span class="kronex-dot"></span> Kronex OS
+        </a>
+        <a href="#servicios" class="nav-item">Servicios</a>
+        <a href="#consola" class="nav-item">Terminal</a>
+        <a href="#contacto" class="nav-item">Contacto</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#contacto" class="btn btn-sm btn-outline">Hablemos</a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menú de navegación">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="inicio">
+      <div class="hero-container">
+        
+        <div class="hero-badge">
+          <span class="badge-icon">🐆</span>
+          <span class="badge-text">Estudio de Ingeniería de Software • Guerrero, México</span>
+        </div>
+
+        <h1 class="hero-title">
+          Tecnología de vanguardia con la fuerza y agilidad del <span class="text-gradient-gold">Ocelotl</span>.
+        </h1>
+
+        <p class="hero-description">
+          Fundado por dos hermanos en el estado de Guerrero. En <strong>Ocelotl Studio</strong> transformamos ideas ambiciosas en aplicaciones móviles, plataformas web y software de alto impacto con estándares de nivel internacional.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#kronex" class="btn btn-primary">
+            <span>Ver Proyecto Insignia: Kronex OS</span>
+            <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <a href="#origen" class="btn btn-glass">
+            <span>Conoce Nuestra Historia</span>
+          </a>
+        </div>
+
+        <!-- Hero Showcase Card -->
+        <div class="hero-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <div class="terminal-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <div class="terminal-title">ocelotl.studio // manifest.config</div>
+              <div class="terminal-badge">LIVE V1.0</div>
+            </div>
+
+            <div class="showcase-content">
+              <div class="showcase-left">
+                <div class="jaguar-emblem-wrap">
+                  <img src="assets/logo-gold.png" alt="Ocelotl Studio Logo" class="showcase-logo">
+                  <div class="emblem-halo"></div>
+                </div>
+              </div>
+
+              <div class="showcase-right">
+                <div class="code-preview">
+                  <p class="code-line"><span class="c-keyword">const</span> <span class="c-var">studio</span> = {</p>
+                  <p class="code-line indent"><span class="c-prop">name:</span> <span class="c-string">"Ocelotl Studio"</span>,</p>
+                  <p class="code-line indent"><span class="c-prop">origin:</span> <span class="c-string">"Estado de Guerrero, México 🇲🇽"</span>,</p>
+                  <p class="code-line indent"><span class="c-prop">founders:</span> <span class="c-string">"Dos hermanos desarrolladores"</span>,</p>
+                  <p class="code-line indent"><span class="c-prop">mission:</span> <span class="c-string">"Apps & Tech de alto calibre"</span>,</p>
+                  <p class="code-line indent"><span class="c-prop">flagshipProject:</span> <span class="c-link"><a href="https://kronexacademic.com" target="_blank" rel="noopener">"Kronex Academic OS"</a></span>,</p>
+                  <p class="code-line indent"><span class="c-prop">status:</span> <span class="c-highlight">"Construyendo el futuro activo"</span></p>
+                  <p class="code-line">};</p>
+                </div>
+
+                <div class="stat-pills">
+                  <div class="stat-pill">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Ingeniería Propia</span>
+                  </div>
+                  <div class="stat-pill">
+                    <span class="stat-number">Cross</span>
+                    <span class="stat-label">iOS, Android, Web</span>
+                  </div>
+                  <div class="stat-pill">
+                    <span class="stat-number">Guerrero</span>
+                    <span class="stat-label">Talento & Raíces</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Guerrero Identity Section -->
+    <section class="section roots-section" id="origen">
+      <div class="section-container">
+        
+        <div class="section-header text-center">
+          <div class="section-tag">
+            <span class="tag-bullet">✦</span>
+            <span>IDENTIDAD & VALORES</span>
+          </div>
+          <h2 class="section-title">
+            Nacidos en Guerrero.<br>
+            <span class="text-gradient-gold">Pensados para el mundo.</span>
+          </h2>
+          <p class="section-subtitle">
+            El <em>Ocelotl</em> (jaguar) es el símbolo ancestral supremo de nuestra tierra: representa la fuerza indomable, la concentración estratégica y la determinación para conquistar cualquier desafío.
+          </p>
+        </div>
+
+        <div class="roots-narrative-card">
+          <div class="narrative-grid">
+            <div class="narrative-content">
+              <span class="narrative-eyebrow">HISTORIA DE LOS FUNDADORES</span>
+              <h3 class="narrative-title">La visión de dos hermanos programadores</h3>
+              <p>
+                Ocelotl Studio nació de una convicción inquebrantable entre dos hermanos del estado de Guerrero: <strong>la gran tecnología no tiene que provenir únicamente de Silicon Valley o de las capitales mundiales</strong>.
+              </p>
+              <p>
+                Desde nuestro rincón en Guerrero, combinamos el ingenio, la perseverancia y la pasión por el código limpio para crear software moderno, accesible y estéticamente superior. No somos solo desarrolladores; somos constructores de herramientas que impactan el día a día de las personas.
+              </p>
+              <div class="guerrero-highlight-box">
+                <span class="gh-icon">📍</span>
+                <div>
+                  <strong>Orgullo Guerrerense:</strong> Cada línea de código que escribimos lleva la identidad, el carácter y la disciplina de nuestra gente.
+                </div>
+              </div>
+            </div>
+
+            <div class="narrative-pillars">
+              <div class="pillar-card">
+                <div class="pillar-icon">⚡</div>
+                <div class="pillar-body">
+                  <h4>Garra & Rendimiento</h4>
+                  <p>Arquitecturas sólidas, tiempos de carga mínimos y software optimizado al límite. No aceptamos código mediocre.</p>
+                </div>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-icon">🎨</div>
+                <div class="pillar-body">
+                  <h4>Artesanía Digital</h4>
+                  <p>Inspirados en la minuciosa tradición artesanal de Guerrero, cuidamos cada interacción, animación y tipografía al milímetro.</p>
+                </div>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-icon">🌐</div>
+                <div class="pillar-body">
+                  <h4>Visión Global</h4>
+                  <p>Construimos soluciones escalables capaces de competir en cualquier mercado internacional sin perder nuestra esencia.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Featured Project: Kronex Academic OS -->
+    <section class="section kronex-section" id="kronex">
+      <div class="section-container">
+        
+        <div class="kronex-hero-badge">
+          <span class="badge-pulse"></span>
+          <span>PROYECTO INSIGNIA • OCELOTL STUDIO</span>
+        </div>
+
+        <div class="kronex-card">
+          <div class="kronex-grid">
+            
+            <!-- Left Info -->
+            <div class="kronex-info">
+              <div class="kronex-brand">
+                <img src="assets/kronex/kronex-logo.png" alt="Kronex Logo" class="kronex-logo-img" width="44" height="44">
+                <div>
+                  <h3 class="kronex-name">KRONEX</h3>
+                  <span class="kronex-category">Academic OS</span>
+                </div>
+              </div>
+
+              <h2 class="kronex-heading">
+                Tu día académico, <span class="text-teal">en perfecto orden.</span>
+              </h2>
+
+              <p class="kronex-desc">
+                Kronex Academic OS es una aplicación revolucionaria para estudiantes de educación media superior y universitaria. Centraliza horarios, materias, tareas y calendarios en un sistema inteligente y sincronizado en tiempo real.
+              </p>
+
+              <div class="kronex-features-list">
+                <div class="kronex-feature-item">
+                  <div class="k-icon">📸</div>
+                  <div class="k-text">
+                    <strong>Escaneo de Horario por Foto:</strong> Toma una foto de tu horario escolar físico y el asistente inteligente <strong>KRON</strong> detecta y organiza tus materias automáticamente.
+                  </div>
+                </div>
+
+                <div class="kronex-feature-item">
+                  <div class="k-icon">⏱️</div>
+                  <div class="k-text">
+                    <strong>Pantalla "Hoy" Dinámica:</strong> Sabe exactamente cuál es tu próxima clase, aula, profesor y tareas antes de que tengas que buscarlo.
+                  </div>
+                </div>
+
+                <div class="kronex-feature-item">
+                  <div class="k-icon">🧠</div>
+                  <div class="k-text">
+                    <strong>Asistente KRON:</strong> Conecta tu horario con tus tareas para sugerirte cuándo estudiar y qué entregar en el momento exacto.
+                  </div>
+                </div>
+
+                <div class="kronex-feature-item">
+                  <div class="k-icon">📅</div>
+                  <div class="k-text">
+                    <strong>Calendario Académico Integrado:</strong> Exámenes, entregas y actividades sincronizadas en una sola vista mensual limpia.
+                  </div>
+                </div>
+              </div>
+
+              <div class="kronex-actions">
+                <a href="https://kronexacademic.com" target="_blank" rel="noopener noreferrer" class="btn btn-teal">
+                  <span>Visitar kronexacademic.com</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+                <a href="https://github.com/N1CKGZ/kronex-releases/releases/download/v0.5.0-beta10/KronexV1.apk" class="btn btn-glass-teal" target="_blank" rel="noopener noreferrer">
+                  <span class="apk-icon">🤖</span>
+                  <span>Descargar Beta APK</span>
+                </a>
+              </div>
+
+              <div class="kronex-meta-status">
+                <span class="status-dot"></span>
+                <span>Desarrollado y producido íntegramente por Ocelotl Studio</span>
+              </div>
+            </div>
+
+            <!-- Right Interactive Phone Showcase -->
+            <div class="kronex-visual">
+              <div class="phone-tabs" role="tablist">
+                <button class="phone-tab active" data-screen="today" role="tab" aria-selected="true">
+                  <span>Pantalla Hoy</span>
+                </button>
+                <button class="phone-tab" data-screen="schedule" role="tab" aria-selected="false">
+                  <span>Horario Semanal</span>
+                </button>
+              </div>
+
+              <div class="phone-mockup-wrapper">
+                <div class="phone-mockup-frame">
+                  <div class="phone-notch">
+                    <span class="notch-speaker"></span>
+                    <span class="notch-camera"></span>
+                  </div>
+                  
+                  <div class="phone-viewport">
+                    <img src="assets/kronex/kronex-screen-today.jpg" alt="Kronex Academic OS Pantalla Hoy" class="phone-screenshot active" id="kronexImgToday">
+                    <img src="assets/kronex/kronex-screen-schedule.jpg" alt="Kronex Academic OS Horario Semanal" class="phone-screenshot" id="kronexImgSchedule">
+                  </div>
+
+                  <div class="phone-home-indicator"></div>
+                </div>
+                
+                <div class="phone-ambient-glow" aria-hidden="true"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Services / Capabilities -->
+    <section class="section services-section" id="servicios">
+      <div class="section-container">
+        
+        <div class="section-header text-center">
+          <div class="section-tag">
+            <span class="tag-bullet">✦</span>
+            <span>CAPACIDADES TÉCNICAS</span>
+          </div>
+          <h2 class="section-title">
+            Lo que creamos en <span class="text-gradient-gold">Ocelotl Studio</span>
+          </h2>
+          <p class="section-subtitle">
+            Abarcamos el ciclo completo de vida del software: desde la concepción de producto y arquitectura hasta el despliegue en producción y escalabilidad.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          
+          <div class="service-card">
+            <div class="service-icon-wrap">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+            </div>
+            <h3 class="service-title">Desarrollo de Apps Móviles</h3>
+            <p class="service-desc">
+              Aplicaciones nativas e híbridas de alto desempeño para iOS y Android. Interfaces fluidas a 120Hz, experiencia offline-first y arquitecturas limpias.
+            </p>
+            <ul class="service-tech-tags">
+              <li>Flutter</li>
+              <li>Android / Kotlin</li>
+              <li>React Native</li>
+              <li>Clean Architecture</li>
+            </ul>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon-wrap">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+            <h3 class="service-title">Plataformas Web & SaaS</h3>
+            <p class="service-desc">
+              Aplicaciones web progresivas, portales y sistemas web completos con tiempos de carga milimétricos, SEO técnico optimizado y máxima seguridad.
+            </p>
+            <ul class="service-tech-tags">
+              <li>TypeScript</li>
+              <li>React / Next.js</li>
+              <li>Vite</li>
+              <li>Tailwind CSS</li>
+            </ul>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon-wrap">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                <line x1="6" y1="18" x2="6.01" y2="18"></line>
+              </svg>
+            </div>
+            <h3 class="service-title">Backend & Cloud APIs</h3>
+            <p class="service-desc">
+              Diseño de microservicios, bases de datos relacionales y NoSQL, APIs RESTful y GraphQL preparadas para soportar alta demanda sin interrupciones.
+            </p>
+            <ul class="service-tech-tags">
+              <li>Node.js / Bun</li>
+              <li>Python</li>
+              <li>PostgreSQL</li>
+              <li>Supabase / Firebase</li>
+            </ul>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon-wrap">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93L12 10v4"></path>
+                <circle cx="12" cy="18" r="2"></circle>
+                <path d="M4.93 4.93l1.41 1.41M19.07 4.93l-1.41 1.41M1 12h2M21 12h2M4.93 19.07l1.41-1.41M19.07 19.07l-1.41-1.41"></path>
+              </svg>
+            </div>
+            <h3 class="service-title">I+D & Tecnologías Emergentes</h3>
+            <p class="service-desc">
+              Integración de visión computacional, modelos de lenguaje (LLMs / IA), automatización de procesos y prototipado rápido de conceptos pioneros.
+            </p>
+            <ul class="service-tech-tags">
+              <li>IA & OCR</li>
+              <li>Automatización</li>
+              <li>Edge Computing</li>
+              <li>Prototipado</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Interactive Studio Terminal Section -->
+    <section class="section console-section" id="consola">
+      <div class="section-container">
+        
+        <div class="section-header text-center">
+          <div class="section-tag">
+            <span class="tag-bullet">✦</span>
+            <span>EXPERIENCIA INTERACTIVA</span>
+          </div>
+          <h2 class="section-title">
+            Consola <span class="text-gradient-gold">Ocelotl Studio</span>
+          </h2>
+          <p class="section-subtitle">
+            Ejecuta comandos interactivos para conocer más sobre nuestro estudio, proyectos y fundadores.
+          </p>
+        </div>
+
+        <div class="terminal-container">
+          <div class="terminal-bar">
+            <div class="terminal-buttons">
+              <span class="t-btn close"></span>
+              <span class="t-btn min"></span>
+              <span class="t-btn max"></span>
+            </div>
+            <div class="terminal-user">guest@ocelotl-studio: ~/overview</div>
+            <div class="terminal-shell-type">zsh</div>
+          </div>
+
+          <div class="terminal-screen" id="terminalScreen">
+            <div class="terminal-log" id="terminalLog">
+              <p class="t-output-system">🐆 Ocelotl Studio Interactive Console v1.0.0 (Guerrero, MX)</p>
+              <p class="t-output-system">Escribe <span class="t-cmd-highlight">help</span> o pulsa los botones rápidos para consultar información.</p>
+              <br>
+            </div>
+
+            <div class="terminal-input-row">
+              <span class="t-prompt">ocelotl ➜ <span class="t-path">~</span> $</span>
+              <input type="text" class="t-input" id="terminalInput" placeholder="escribe 'help', 'kronex', 'origen'..." autocomplete="off" spellcheck="false">
+            </div>
+          </div>
+
+          <div class="terminal-shortcuts">
+            <span class="shortcuts-title">Comandos rápidos:</span>
+            <button class="cmd-pill" data-command="help">help</button>
+            <button class="cmd-pill" data-command="kronex">kronex</button>
+            <button class="cmd-pill" data-command="origen">origen</button>
+            <button class="cmd-pill" data-command="stack">stack</button>
+            <button class="cmd-pill" data-command="contacto">contacto</button>
+            <button class="cmd-pill" data-command="clear">clear</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact & Roadmap Section -->
+    <section class="section contact-section" id="contacto">
+      <div class="section-container">
+        
+        <div class="contact-card">
+          <div class="contact-grid">
+            
+            <div class="contact-info-col">
+              <div class="section-tag">
+                <span class="tag-bullet">✦</span>
+                <span>CONTACTO DIRECTO</span>
+              </div>
+
+              <h2 class="contact-title">
+                ¿Tienes una idea o proyecto?<br>
+                <span class="text-gradient-gold">Hagámoslo realidad.</span>
+              </h2>
+
+              <p class="contact-text">
+                En Ocelotl Studio colaboramos con empresas, emprendedores y estudiantes que buscan desarrollar software con alma, rendimiento y distinción visual.
+              </p>
+
+              <div class="contact-details">
+                <div class="detail-item">
+                  <div class="detail-icon">📍</div>
+                  <div>
+                    <strong>Ubicación</strong>
+                    <p>Estado de Guerrero, México</p>
+                  </div>
+                </div>
+
+                <div class="detail-item">
+                  <div class="detail-icon">🌐</div>
+                  <div>
+                    <strong>Dominio Oficial</strong>
+                    <p><a href="https://ocelotl.studio" class="inline-link">ocelotl.studio</a></p>
+                  </div>
+                </div>
+
+                <div class="detail-item">
+                  <div class="detail-icon">🚀</div>
+                  <div>
+                    <strong>Proyecto Destacado</strong>
+                    <p><a href="https://kronexacademic.com" target="_blank" rel="noopener" class="inline-link">kronexacademic.com</a></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="founders-quote">
+                <p>«La tecnología construida con dedicación y raíces profundas no tiene límites.»</p>
+                <span>— Fundadores de Ocelotl Studio</span>
+              </div>
+            </div>
+
+            <div class="contact-form-col">
+              <form class="contact-form" id="contactForm" onsubmit="event.preventDefault(); handleContactSubmit();">
+                <h3 class="form-title">Envíanos un mensaje</h3>
+                <p class="form-subtitle">Te responderemos a la brevedad directamente los fundadores.</p>
+
+                <div class="form-group">
+                  <label for="nameInput">Tu Nombre</label>
+                  <input type="text" id="nameInput" placeholder="Ej. Carlos Rivera" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="emailInput">Correo Electrónico</label>
+                  <input type="email" id="emailInput" placeholder="nombre@correo.com" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="projectType">Tipo de Proyecto / Consulta</label>
+                  <select id="projectType" required>
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="app">Desarrollo de App Móvil (iOS / Android)</option>
+                    <option value="web">Plataforma Web / SaaS</option>
+                    <option value="kronex">Pregunta sobre Kronex Academic OS</option>
+                    <option value="collab">Alianza o Colaboración</option>
+                    <option value="other">Otro asunto</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="messageInput">Detalles del Proyecto o Mensaje</label>
+                  <textarea id="messageInput" rows="4" placeholder="Cuéntanos brevemente sobre tu proyecto o idea..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block" id="btnSubmitContact">
+                  <span>Enviar Mensaje</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                </button>
+
+                <div class="form-feedback" id="formFeedback" style="display: none;"></div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="assets/jaguar-icon-gold.png" alt="Ocelotl Studio" width="34" height="34">
+            <span class="f-brand-name">OCELOTL STUDIO</span>
+          </div>
+          <p class="footer-bio">
+            Estudio de ingeniería de software, arquitectura digital y aplicaciones móviles de alto rendimiento.
+          </p>
+          <div class="footer-origin-badge">
+            <span>Orgullosamente desde el estado de Guerrero, México 🇲🇽</span>
+          </div>
+        </div>
+
+        <div class="footer-links-group">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#origen">Nuestras Raíces</a></li>
+            <li><a href="#kronex">Kronex Academic OS</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#consola">Terminal Interactiva</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-group">
+          <h4>Ecosistema</h4>
+          <ul>
+            <li><a href="https://kronexacademic.com" target="_blank" rel="noopener">Kronex Academic OS ↗</a></li>
+            <li><a href="https://github.com/N1CKGZ/kronex-releases" target="_blank" rel="noopener">Kronex Releases ↗</a></li>
+            <li><a href="#contacto">Iniciar Proyecto</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          © <span id="currentYear">2026</span> <strong>Ocelotl Studio</strong>. Todos los derechos reservados.
+        </div>
+        <div class="footer-tagline">
+          Hecho con código de autor y pasión en el Estado de Guerrero.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
