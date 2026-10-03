@@ -1,6 +1,6 @@
 /**
  * Ocelotl Studio Interactive Engine
- * Handles navigation, interactive device showcase, and terminal emulator
+ * Handles navigation, interactive device showcase, and developer console
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -20,7 +20,7 @@ function initNavbar() {
 
   // Sticky blur on scroll
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 30) {
+    if (window.scrollY > 20) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
@@ -30,8 +30,9 @@ function initNavbar() {
   // Mobile toggle
   if (mobileToggle && navMenu) {
     mobileToggle.addEventListener('click', () => {
+      const isOpen = navMenu.classList.toggle('open');
       mobileToggle.classList.toggle('active');
-      navMenu.classList.toggle('open');
+      mobileToggle.setAttribute('aria-expanded', String(isOpen));
     });
 
     // Close menu when clicking a link
@@ -39,6 +40,7 @@ function initNavbar() {
       link.addEventListener('click', () => {
         mobileToggle.classList.remove('active');
         navMenu.classList.remove('open');
+        mobileToggle.setAttribute('aria-expanded', 'false');
       });
     });
   }
@@ -48,9 +50,11 @@ function initNavbar() {
    Kronex Phone Mockup Tab Switcher
    -------------------------------------------------------------------------- */
 function initKronexShowcase() {
-  const tabs = document.querySelectorAll('.phone-tab');
+  const tabs = document.querySelectorAll('.switcher-btn');
   const imgToday = document.getElementById('kronexImgToday');
   const imgSchedule = document.getElementById('kronexImgSchedule');
+
+  if (!tabs.length || !imgToday || !imgSchedule) return;
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
@@ -75,70 +79,59 @@ function initKronexShowcase() {
 }
 
 /* --------------------------------------------------------------------------
-   Interactive Studio Terminal Console
+   Interactive Developer Console
    -------------------------------------------------------------------------- */
 function initInteractiveTerminal() {
   const input = document.getElementById('terminalInput');
   const log = document.getElementById('terminalLog');
   const screen = document.getElementById('terminalScreen');
-  const shortcutButtons = document.querySelectorAll('.cmd-pill');
+  const actionButtons = document.querySelectorAll('.terminal-action-btn');
 
   if (!input || !log) return;
 
   const commands = {
     help: `
 Comandos disponibles:
-  <span class="t-cmd-highlight">kronex</span>     - Conocer detalles de Kronex Academic OS
-  <span class="t-cmd-highlight">origen</span>     - Historia y raíces guerrerenses del estudio
-  <span class="t-cmd-highlight">servicios</span>  - Nuestras capacidades de desarrollo
-  <span class="t-cmd-highlight">stack</span>      - Tecnologías y herramientas que dominamos
-  <span class="t-cmd-highlight">contacto</span>   - Formas de comunicarte con los fundadores
-  <span class="t-cmd-highlight">clear</span>      - Limpiar la pantalla de la consola
+  <span class="highlight-cmd">kronex</span>     - Especificaciones y arquitectura de Kronex Academic OS
+  <span class="highlight-cmd">origen</span>     - Fundación y sede en el estado de Guerrero, México
+  <span class="highlight-cmd">servicios</span>  - Capacidades de ingeniería móvil, web y cloud
+  <span class="highlight-cmd">stack</span>      - Herramientas y tecnologías de producción
+  <span class="highlight-cmd">contacto</span>   - Vías formales de comunicación institucional
+  <span class="highlight-cmd">clear</span>      - Limpiar la salida de la consola
 `,
     kronex: `
-🚀 <strong style="color:#38BDF8;">Kronex Academic OS:</strong>
-App insignia creada por Ocelotl Studio para optimizar la vida académica de estudiantes.
-• Escaneo de horarios físicos por cámara con IA (KRON).
-• Dashboard "Hoy" con clases y tareas inmediatas.
-• Calendario integral y recordatorios proactivos.
-🌐 Sitio web oficial: <a href="https://kronexacademic.com" target="_blank" style="color:#38BDF8;text-decoration:underline;">kronexacademic.com</a>
-📦 Beta APK: <a href="https://github.com/N1CKGZ/kronex-releases" target="_blank" style="color:#38BDF8;text-decoration:underline;">github.com/N1CKGZ/kronex-releases</a>
+[KRONEX ACADEMIC OS // CASO DE ESTUDIO]
+Plataforma académica integral desarrollada por Ocelotl Studio.
+• Visión por computadora: Digitalización óptica de horarios físicos.
+• Motor KRON: Análisis contextual y recomendaciones en tiempo real.
+• Persistencia: Arquitectura offline-first con sincronización asíncrona.
+Sitio web oficial: <a href="https://kronexacademic.com" target="_blank" style="color:#60A5FA;text-decoration:underline;">kronexacademic.com</a>
+Repositorio de releases: <a href="https://github.com/N1CKGZ/kronex-releases" target="_blank" style="color:#60A5FA;text-decoration:underline;">github.com/N1CKGZ/kronex-releases</a>
 `,
     origen: `
-🐆 <strong style="color:#F5B037;">Nuestras Raíces:</strong>
-Ocelotl Studio fue fundado por dos hermanos en el estado de Guerrero, México.
-Inspirados en la figura del Ocelotl (el jaguar de Guerrero), construimos tecnología
-con garra, perseverancia y arquitectura sin concesiones.
-Demostramos con hechos que el software de clase mundial florece desde nuestra tierra.
-`,
-    guerrero: `
-📍 <strong style="color:#10B981;">Estado de Guerrero, México:</strong>
-Tierra de historia ancestral, riqueza artesanal y espíritu indomable.
-En Ocelotl Studio llevamos el nombre de Guerrero a la vanguardia de la industria tecnológica.
+[FUNDACIÓN & SEDE]
+Ocelotl Studio fue fundado por dos hermanos desarrolladores de software en el estado de Guerrero, México.
+Bajo una filosofía de rigor técnico y autonomía, el estudio diseña sistemas de alto desempeño
+para clientes locales y globales sin desvincularse de sus raíces territoriales.
 `,
     servicios: `
-🛠️ <strong style="color:#FCD34D;">Servicios de Desarrollo:</strong>
-• 📱 Aplicaciones Móviles nativas y cross-platform (iOS & Android).
-• 💻 Plataformas Web modernas, SaaS y PWA.
-• ⚡ Arquitectura Cloud, APIs escalables y Microservicios.
-• 🤖 Soluciones de IA, OCR, visión por computadora y automatización.
+[DISCIPLINAS DE INGENIERÍA]
+• Mobile Engineering: Aplicaciones nativas y multiplataforma (iOS & Android).
+• Web & SaaS Platforms: Portales y arquitecturas frontend optimizadas.
+• Cloud & API Infrastructure: Microservicios, PostgreSQL, Redis, Edge Computing.
+• Applied Research & AI: Integración de OCR, LLMs y automatización de flujos.
 `,
     stack: `
-💻 <strong style="color:#34D399;">Tech Stack Principal:</strong>
-• Frontend: TypeScript, React, Next.js, Vite, Tailwind CSS, Modern Web APIs.
-• Mobile: Flutter, Kotlin / Android, React Native.
-• Backend: Node.js, Python, PostgreSQL, REST/GraphQL, Edge Functions.
-• Infraestructura: Git, CI/CD, Docker, Cloudflare, Vercel, Supabase.
+[TECNOLOGÍAS DE PRODUCCIÓN]
+• Frontend / Mobile: TypeScript, React, Next.js, Vite, Flutter, Kotlin.
+• Backend: Node.js, Python, PostgreSQL, REST / GraphQL, Supabase, Edge Functions.
+• Infraestructura: Git, CI/CD Pipelines, Vercel, Cloudflare, Docker.
 `,
     contacto: `
-📬 <strong style="color:#F5B037;">Contacto Directo:</strong>
-¿Tienes una consulta o propuesta de desarrollo?
-• Correo / Web: <a href="https://ocelotl.studio" style="color:#FCD34D;">ocelotl.studio</a>
-• Proyecto: <a href="https://kronexacademic.com" target="_blank" style="color:#FCD34D;">kronexacademic.com</a>
-• O completa el formulario al final de la página para respuesta inmediata.
-`,
-    sudo: `
-🔒 ¡Acceso concedido! Pero recuerda: «Con gran poder en el código, viene gran responsabilidad».
+[CANALES DE COMUNICACIÓN]
+• Sitio oficial: <a href="https://ocelotl.studio" style="color:#E5C07B;">ocelotl.studio</a>
+• Proyecto Kronex: <a href="https://kronexacademic.com" target="_blank" style="color:#60A5FA;">kronexacademic.com</a>
+• Formulario: Puedes enviar tus requerimientos mediante la sección de contacto al final de la página.
 `,
     clear: '__CLEAR__'
   };
@@ -149,8 +142,8 @@ En Ocelotl Studio llevamos el nombre de Guerrero a la vanguardia de la industria
 
     if (cmd === 'clear') {
       log.innerHTML = `
-        <p class="t-output-system">🐆 Ocelotl Studio Interactive Console v1.0.0 (Guerrero, MX)</p>
-        <p class="t-output-system">Escribe <span class="t-cmd-highlight">help</span> para consultar información.</p>
+        <p class="log-system">Ocelotl Studio Developer Console [Version 1.0.4 - Guerrero, MX]</p>
+        <p class="log-system">Escribe <span class="highlight-cmd">help</span> para consultar información.</p>
         <br>
       `;
       return;
@@ -158,18 +151,18 @@ En Ocelotl Studio llevamos el nombre de Guerrero a la vanguardia de la industria
 
     // Echo command
     const echoEl = document.createElement('div');
-    echoEl.className = 't-command-echo';
-    echoEl.innerHTML = `ocelotl ➜ ~ $ <span>${escapeHtml(rawCmd)}</span>`;
+    echoEl.className = 'log-echo';
+    echoEl.innerHTML = `guest@ocelotl:~$ <span>${escapeHtml(rawCmd)}</span>`;
     log.appendChild(echoEl);
 
     // Result
     const resEl = document.createElement('div');
-    resEl.className = 't-command-result';
+    resEl.className = 'log-result';
 
     if (commands[cmd]) {
       resEl.innerHTML = commands[cmd];
     } else {
-      resEl.innerHTML = `<span style="color:#EF4444;">Comando no reconocido: "${escapeHtml(rawCmd)}". Escribe <strong class="t-cmd-highlight">help</strong> para ver la lista de comandos.</span>`;
+      resEl.innerHTML = `<span style="color:#EF4444;">Comando no reconocido: "${escapeHtml(rawCmd)}". Escribe <strong class="highlight-cmd">help</strong> para ver la lista de comandos disponibles.</span>`;
     }
 
     log.appendChild(resEl);
@@ -183,7 +176,7 @@ En Ocelotl Studio llevamos el nombre de Guerrero a la vanguardia de la industria
     }
   });
 
-  shortcutButtons.forEach(btn => {
+  actionButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       const command = btn.dataset.command;
       input.value = command;
@@ -214,34 +207,30 @@ function handleContactSubmit() {
   if (!name || !email || !message) return;
 
   btn.disabled = true;
-  btn.innerHTML = `<span>Enviando mensaje...</span>`;
+  btn.innerHTML = `<span>Procesando consulta...</span>`;
 
-  // Simulating instant professional submission
   setTimeout(() => {
-    feedback.className = 'form-feedback success';
+    feedback.className = 'form-alert success';
     feedback.style.display = 'block';
     feedback.innerHTML = `
-      <strong>¡Gracias, ${escapeHtml(name)}!</strong><br>
-      Hemos recibido tu mensaje sobre <em>${escapeHtml(type || 'tu consulta')}</em>.
-      Los fundadores de Ocelotl Studio te responderemos a <strong>${escapeHtml(email)}</strong> a la brevedad.
+      <strong>Consulta transmitida con éxito.</strong><br>
+      Apreciamos tu mensaje, ${escapeHtml(name)}. Un miembro del equipo de ingeniería se pondrá en contacto contigo a través de <strong>${escapeHtml(email)}</strong>.
     `;
 
     document.getElementById('contactForm').reset();
     btn.disabled = false;
-    btn.innerHTML = `
-      <span>Mensaje Enviado ✓</span>
-    `;
+    btn.innerHTML = `<span>Consulta Transmitida</span>`;
 
     setTimeout(() => {
       btn.innerHTML = `
-        <span>Enviar Otro Mensaje</span>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <span>Transmitir Consulta</span>
+        <svg class="icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="22" y1="2" x2="11" y2="13"></line>
           <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
         </svg>
       `;
     }, 4000);
-  }, 700);
+  }, 600);
 }
 
 /* --------------------------------------------------------------------------
