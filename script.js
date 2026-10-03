@@ -272,12 +272,22 @@ function initInteractiveTerminal() {
   const commands = {
     help: `
 Comandos disponibles:
+  <span class="highlight-cmd">ocelotl</span>    - Significado ancestral y símbolo del jaguar de Guerrero
   <span class="highlight-cmd">kronex</span>     - Especificaciones y arquitectura de Kronex Academic OS
   <span class="highlight-cmd">origen</span>     - Fundación y sede en el estado de Guerrero, México
   <span class="highlight-cmd">servicios</span>  - Capacidades de ingeniería móvil, web y cloud
   <span class="highlight-cmd">stack</span>      - Herramientas y tecnologías de producción
   <span class="highlight-cmd">contacto</span>   - Vías formales de comunicación institucional
   <span class="highlight-cmd">clear</span>      - Limpiar la salida de la consola
+`,
+    ocelotl: `
+[HERENCIA & SIGNIFICADO: OCĒLŌTL]
+Etimología náhuatl: ocēlōtl [oːˈseːloːt͡ɬ] • Jaguar (Panthera onca).
+El jaguar es el animal más representativo, reverenciado y sagrado del estado de Guerrero.
+En la cosmovisión ancestral, sus manchas representan las constelaciones reflejadas en la noche.
+Simboliza la visión penetrante donde otros solo ven penumbra, la paciencia estratégica
+que precede a la acción y la fuerza indomable de un territorio que jamás retrocede.
+En Ocelotl Studio, ese espíritu forja nuestra ingeniería: precisión matemática, código limpio y rendimiento extremo.
 `,
     kronex: `
 [KRONEX ACADEMIC OS // CASO DE ESTUDIO]

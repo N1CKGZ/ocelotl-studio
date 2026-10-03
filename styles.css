@@ -789,6 +789,164 @@ a.text-link:hover {
 }
 
 /* ==========================================================================
+   Heritage & Symbolism: Ocelotl
+   ========================================================================== */
+.heritage-section {
+  border-top: 1px solid var(--border-subtle);
+  background: radial-gradient(circle at 50% 0%, rgba(229, 192, 123, 0.03) 0%, transparent 60%);
+}
+
+.heritage-showcase-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 56px 48px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+}
+
+.heritage-top {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  align-items: center;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 48px;
+}
+
+.heritage-glyph-badge {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+}
+
+.glyph-origin {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  color: var(--accent-gold);
+  margin-bottom: 6px;
+}
+
+.glyph-word {
+  font-family: var(--font-mono);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.glyph-pronunciation {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-tertiary);
+}
+
+.heritage-prose-lead p {
+  font-size: 1.12rem;
+  color: #DDE3EC;
+  line-height: 1.7;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.heritage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+  margin-bottom: 48px;
+}
+
+.heritage-col {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 24px;
+}
+
+.heritage-number {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.heritage-col-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.heritage-col-desc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.68;
+}
+
+.heritage-col-desc strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.heritage-manifesto-footer {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 32px 36px;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.manifesto-seal {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.manifesto-logo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  opacity: 0.95;
+}
+
+.manifesto-author-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.manifesto-firm {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+}
+
+.manifesto-loc {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--accent-gold);
+  letter-spacing: 0.12em;
+}
+
+.manifesto-quote {
+  font-size: 0.98rem;
+  font-style: italic;
+  color: #E2E8F0;
+  line-height: 1.65;
+  border-left: 2px solid var(--accent-gold);
+  padding-left: 20px;
+  margin: 0;
+}
+
+/* ==========================================================================
    Flagship Project: Kronex Academic OS
    ========================================================================== */
 .showcase-section {
@@ -1606,9 +1764,12 @@ a.text-link:hover {
 @media (max-width: 1024px) {
   .narrative-split,
   .spotlight-grid,
-  .contact-layout {
+  .contact-layout,
+  .heritage-top,
+  .heritage-grid,
+  .heritage-manifesto-footer {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
   }
 
   .dashboard-body {
@@ -1632,6 +1793,10 @@ a.text-link:hover {
 @media (max-width: 768px) {
   .section {
     padding: 80px 0;
+  }
+
+  .heritage-showcase-card {
+    padding: 32px 20px;
   }
 
   .header-location {
