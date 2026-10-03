@@ -327,13 +327,14 @@ que precede a la acción y la fuerza indomable de un territorio que jamás retro
 En Ocelotl Studio, ese espíritu forja nuestra ingeniería: precisión matemática, código limpio y rendimiento extremo.
 `,
     kronex: `
-[KRONEX ACADEMIC OS // CASO DE ESTUDIO]
-Plataforma académica integral desarrollada por Ocelotl Studio.
-• Visión por computadora: Digitalización óptica de horarios físicos.
+[KRONEX ACADEMIC OS // CASO DE ESTUDIO INSIGNIA]
+Plataforma académica integral concebida y desarrollada por Ocelotl Studio.
+• Visión por computadora: Digitalización óptica de horarios físicos con IA.
 • Motor KRON: Análisis contextual y recomendaciones en tiempo real.
 • Persistencia: Arquitectura offline-first con sincronización asíncrona.
-Sitio web oficial: <a href="https://kronexacademic.com" target="_blank" style="color:#60A5FA;text-decoration:underline;">kronexacademic.com</a>
-Repositorio de releases: <a href="https://github.com/N1CKGZ/kronex-releases" target="_blank" style="color:#60A5FA;text-decoration:underline;">github.com/N1CKGZ/kronex-releases</a>
+• Caso de estudio completo: <a href="/kronex" style="color:#31D4C1;text-decoration:underline;font-weight:bold;">ocelotl.studio/kronex</a>
+• Sitio web oficial: <a href="https://kronexacademic.com" target="_blank" style="color:#60A5FA;text-decoration:underline;">kronexacademic.com</a>
+• Repositorio de releases: <a href="https://github.com/N1CKGZ/kronex-releases" target="_blank" style="color:#60A5FA;text-decoration:underline;">github.com/N1CKGZ/kronex-releases</a>
 `,
     origen: `
 [ORIGEN & SEDE]

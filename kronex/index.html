@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>Kronex Academic OS | Arquitectura e Ingeniería por Ocelotl Studio</title>
+
+  <!-- SEO & Open Graph -->
+  <meta name="description" content="Caso de estudio y arquitectura técnica de Kronex Academic OS, el sistema operativo académico personal para estudiantes concebido y desarrollado por Ocelotl Studio desde Guerrero, México.">
+  <meta name="keywords" content="Kronex Academic OS, Ocelotl Studio, desarrollo de software Guerrero, Nicolas Godinez Santana, Eduardo Godinez Santana, software academico, horario inteligente, escaneo con IA">
+  <meta name="author" content="Ocelotl Studio">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://ocelotl.studio/kronex">
+  <meta property="og:title" content="Kronex Academic OS | Ingeniería de Software por Ocelotl Studio">
+  <meta property="og:description" content="Conoce la historia, arquitectura y el porqué Ocelotl Studio concibió y desarrolló Kronex Academic OS para transformar la vida estudiantil.">
+  <meta property="og:image" content="../assets/kronex/kronex-screen-today.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kronex Academic OS — Forjado por Ocelotl Studio">
+  <meta name="twitter:description" content="El sistema operativo académico personal: visión por computadora, persistencia offline y diseño de alto rendimiento.">
+  <meta name="twitter:image" content="../assets/kronex/kronex-screen-today.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/favicon.png">
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Ambient Teal Lighting -->
+  <div class="ambient-glow ambient-glow-top" aria-hidden="true"></div>
+  <div class="ambient-glow ambient-glow-subtle" aria-hidden="true"></div>
+  <div class="bg-grid-overlay" aria-hidden="true"></div>
+
+  <!-- Header / Navigation -->
+  <header class="site-header" id="navbar">
+    <div class="header-inner">
+      
+      <div class="brand-combo">
+        <a href="/" class="studio-tag-link" aria-label="Volver al portal principal de Ocelotl Studio">
+          <img src="../assets/jaguar-icon-silver.png" alt="Ocelotl Studio" class="studio-icon" width="22" height="22">
+          <span class="studio-text">OCELOTL</span>
+        </a>
+        <span class="brand-separator" aria-hidden="true">/</span>
+        <a href="#inicio" class="kronex-brand-link" aria-label="Kronex Academic OS">
+          <img src="../assets/kronex/kronex-logo.png" alt="Kronex Logo" class="kronex-logo-icon" width="26" height="26">
+          <span class="kronex-brand-name">KRONEX</span>
+          <span class="kronex-badge-dev">OS</span>
+        </a>
+      </div>
+
+      <nav class="nav" id="navMenu" aria-label="Navegación de Kronex">
+        <a href="#origen" class="nav-link">Por qué se creó</a>
+        <a href="#pilares" class="nav-link">Innovaciones</a>
+        <a href="#galeria" class="nav-link">Galería</a>
+        <a href="#asistente-kron" class="nav-link">Asistente Kron</a>
+        <a href="#especificaciones" class="nav-link">Ficha Técnica</a>
+        <a href="#descargas" class="nav-link">Descargar APK</a>
+        <div class="nav-mobile-cta">
+          <a href="https://github.com/N1CKGZ/kronex-releases/releases/download/v0.5.0-beta10/KronexV1.apk" class="btn btn-teal btn-full">
+            Descargar APK Beta (.apk)
+          </a>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <a href="https://kronexacademic.com" target="_blank" rel="noopener noreferrer" class="btn btn-subtle">
+          <span>Sitio Oficial ↗</span>
+        </a>
+        <a href="https://github.com/N1CKGZ/kronex-releases/releases/download/v0.5.0-beta10/KronexV1.apk" class="btn btn-teal">
+          <span>Descargar APK</span>
+          <svg class="icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+        </a>
+        <button class="menu-button" id="mobileToggle" aria-label="Abrir menú" aria-expanded="false">
+          <span class="menu-line"></span>
+          <span class="menu-line"></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile Backdrop -->
+  <div class="menu-backdrop" id="menuBackdrop" aria-hidden="true"></div>
+
+  <main id="contenido-principal">
+    
+    <!-- Hero Section -->
+    <section class="kronex-hero" id="inicio">
+      <div class="container">
+        
+        <div class="hero-meta-badge">
+          <span class="meta-dot" aria-hidden="true"></span>
+          <span class="meta-text">Ocelotl Studio • Caso de Estudio & Arquitectura Insignia</span>
+        </div>
+
+        <h1 class="hero-main-title">
+          KRONEX ACADEMIC OS.<br>
+          <span class="heading-gradient-teal">El sistema operativo académico forjado por Ocelotl Studio.</span>
+        </h1>
+
+        <p class="hero-lead-description">
+          Concebido, diseñado y programado desde el estado de Guerrero por <strong>Ocelotl Studio</strong>. Kronex transforma el caos de horarios en capturas borrosas y tareas dispersas en un centro de mando personal de alto rendimiento, impulsado por visión artificial, contexto automático y arquitectura <em>offline-first</em>.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="https://github.com/N1CKGZ/kronex-releases/releases/download/v0.5.0-beta10/KronexV1.apk" class="btn btn-teal">
+            <svg class="icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Descargar Beta Oficial (APK v0.5.0-beta10)</span>
+          </a>
+
+          <a href="https://kronexacademic.com" target="_blank" rel="noopener noreferrer" class="btn btn-glass">
+            <span>Visitar Sitio Web Oficial (kronexacademic.com)</span>
+            <svg class="icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+
+          <a href="https://github.com/N1CKGZ/kronex-releases" target="_blank" rel="noopener noreferrer" class="btn btn-subtle">
+            <span>Ver Repositorio en GitHub ↗</span>
+          </a>
+        </div>
+
+        <div class="hero-version-pill">
+          <span>Compilación Android: v0.5.0-beta10-dev • Package: com.kronexacademic.kronex.dev • 100% Código de Autor</span>
+        </div>
+
+        <!-- Master Dual Phone Mockup -->
+        <div class="hero-stage-mockup">
+          <div class="stage-glow" aria-hidden="true"></div>
+          
+          <div class="stage-duo-phones">
+            <!-- Phone 1: Vista Hoy -->
+            <div class="phone-mockup-frame">
+              <div class="phone-notch">
+                <span class="notch-mic"></span>
+                <span class="notch-lens"></span>
+              </div>
+              <img src="../assets/kronex/kronex-screen-today.jpg" alt="Vista Hoy de Kronex Academic OS" class="phone-screen-img" loading="eager">
+              <div class="phone-caption-badge">VISTA HOY • EN TIEMPO REAL</div>
+            </div>
+
+            <!-- Phone 2: Horario Semanal -->
+            <div class="phone-mockup-frame">
+              <div class="phone-notch">
+                <span class="notch-mic"></span>
+                <span class="notch-lens"></span>
+              </div>
+              <img src="../assets/kronex/kronex-screen-schedule.jpg" alt="Horario Semanal de Kronex Academic OS" class="phone-screen-img" loading="eager">
+              <div class="phone-caption-badge">HORARIO SEMANAL DINÁMICO</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section: Why Ocelotl Studio Created Kronex -->
+    <section class="section section-divider" id="origen">
+      <div class="container">
+        
+        <div class="section-heading text-center">
+          <div class="section-kicker">
+            <span class="section-kicker-dot"></span>
+            <span>GÉNESIS & PROPÓSITO TÉCNICO</span>
+          </div>
+          <h2 class="section-main-title">
+            ¿Por qué Ocelotl Studio concibió y creó Kronex Academic OS?
+          </h2>
+          <p class="section-lead-text">
+            No nació como una aplicación de horarios más; nació como un manifiesto de ingeniería para resolver de raíz el colapso organizativo de los estudiantes en bachillerato y universidad.
+          </p>
+        </div>
+
+        <div class="origin-card">
+          <div class="origin-layout">
+            
+            <div class="origin-prose">
+              <h3>El diagnóstico del problema en las aulas</h3>
+              <p>
+                Durante años, los estudiantes han tenido que lidiar con un entorno académico digital fracturado. El horario oficial de clases se entrega en una hoja arrugada o un PDF que termina convertido en una <strong>captura de pantalla borrosa en la galería de fotos</strong>, imposible de encontrar rápidamente entre clases.
+              </p>
+              <p>
+                Las tareas y proyectos quedan olvidados entre mensajes de WhatsApp o notas sueltas. Al mismo tiempo, las herramientas comerciales existentes en las tiendas de apps sufren de dos males endémicos: están <strong>plagadas de anuncios invasivos</strong> que interrumpen el estudio, o dependen de suscripciones costosas con interfaces pesadas y dependientes de internet.
+              </p>
+              <p>
+                En <strong>Ocelotl Studio</strong> decidimos abordar el problema desde la raíz de la ingeniería de software: estructurar un <strong>verdadero Sistema Operativo Académico Personal</strong>. Una herramienta que no solo almacene datos, sino que <strong>entienda la estructura del tiempo del estudiante</strong> y conecte cada materia con sus fechas de entrega y sus días lectivos reales.
+              </p>
+
+              <div class="provenance-quote-bar">
+                «Kronex Academic OS demuestra que desde el estado de Guerrero diseñamos y construimos tecnología de calibre internacional: sin anuncios, con privacidad irrestricta y con una estética que dignifica la experiencia del estudiante.»
+                <span class="provenance-author">Nicolas Godinez Santana & Eduardo Godinez Santana — Creadores de Kronex / Ocelotl Studio</span>
+              </div>
+            </div>
+
+            <div class="chaos-versus-order">
+              <div class="chaos-box">
+                <div class="chaos-header">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                  <span>EL CAOS TRADICIONAL DEL ESTUDIANTE</span>
+                </div>
+                <ul class="chaos-list">
+                  <li><span>✕</span> Horarios perdidos en capturas de pantalla de WhatsApp.</li>
+                  <li><span>✕</span> Entregas olvidadas por falta de contexto entre materias.</li>
+                  <li><span>✕</span> Descoordinación de horarios entre compañeros de equipo.</li>
+                  <li><span>✕</span> Apps lentas saturadas de publicidad invasiva.</li>
+                </ul>
+              </div>
+
+              <div class="order-box">
+                <div class="order-header">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>LA RESPUESTA DE OCELOTL STUDIO (KRONEX)</span>
+                </div>
+                <ul class="order-list">
+                  <li><span>✓</span> Próxima clase y cuenta regresiva visible al instante.</li>
+                  <li><span>✓</span> Digitalización de horario en 5 segundos con Visión por IA.</li>
+                  <li><span>✓</span> Fechas sugeridas según los días reales de cada materia.</li>
+                  <li><span>✓</span> 100% Privado: arquitectura offline sin recolección de datos.</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section: 5 Core Engineering Pillars -->
+    <section class="section section-divider" id="pilares">
+      <div class="container">
+        
+        <div class="section-heading text-center">
+          <div class="section-kicker">
+            <span class="section-kicker-dot"></span>
+            <span>ARQUITECTURA DE SISTEMAS</span>
+          </div>
+          <h2 class="section-main-title">
+            Los 5 pilares de ingeniería de Kronex OS
+          </h2>
+          <p class="section-lead-text">
+            Diseñado desde cero con estándares de sistemas concurrentes, interfaces táctiles fluidas e inteligencia contextual aplicada.
+          </p>
+        </div>
+
+        <div class="pillars-grid">
+          
+          <div class="pillar-card">
+            <div class="pillar-card-accent"></div>
+            <div class="pillar-index">01 // VISIÓN POR COMPUTADORA</div>
+            <h3 class="pillar-title">Escaneo Inteligente con IA (OCR)</h3>
+            <p class="pillar-desc">
+              El estudiante toma una sola foto a su horario impreso o captura digital. Nuestro pipeline de visión artificial segmenta filas, detecta nombres de materias, profesores, salones y horas en <strong>menos de 5 segundos</strong>, permitiendo editar y confirmar antes de sembrar el horario en la base de datos local.
+            </p>
+            <span class="pillar-tag">Edge Vision • Zero Data Upload</span>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-card-accent"></div>
+            <div class="pillar-index">02 // CONTEXTO TEMPORAL</div>
+            <h3 class="pillar-title">Motor Algorítmico KRON</h3>
+            <p class="pillar-desc">
+              Kronex no es pasivo: entiende el flujo de la semana escolar. Si tienes clase de Cálculo los lunes y jueves, al crear una tarea el sistema <strong>deduce automáticamente cuándo vuelves a ver a ese profesor</strong> y te propone la fecha límite idónea, evitando entregas a destiempo.
+            </p>
+            <span class="pillar-tag">Heuristic Scheduling Engine</span>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-card-accent"></div>
+            <div class="pillar-index">03 // SOBERANÍA & PRIVACIDAD</div>
+            <h3 class="pillar-title">Arquitectura Offline-First</h3>
+            <p class="pillar-desc">
+              La vida en el campus universitario no siempre cuenta con cobertura Wi-Fi estable. Kronex almacena y procesa todo en el almacenamiento del dispositivo. <strong>Abre instantáneamente sin latencia de red</strong> y no rastrea la actividad personal del usuario.
+            </p>
+            <span class="pillar-tag">Local Storage • Zero Latency</span>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-card-accent"></div>
+            <div class="pillar-index">04 // GESTIÓN DE FLUJO</div>
+            <h3 class="pillar-title">Control de Entregas & Exámenes</h3>
+            <p class="pillar-desc">
+              Tableros táctiles divididos por estados operativos (Pendiente, En curso, Listo). El estudiante puede categorizar proyectos complejos, vincular entregas a salones específicos y recibir alertas preventivas antes de que venza el plazo.
+            </p>
+            <span class="pillar-tag">Task State Machine</span>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-card-accent"></div>
+            <div class="pillar-index">05 // EXPERIENCIA NATIVA</div>
+            <h3 class="pillar-title">Rendimiento Extremo a 120 FPS</h3>
+            <p class="pillar-desc">
+              Cero dependencias innecesarias, consumo mínimo de batería y una paleta visual de alto contraste diseñada para ser leída bajo el sol del campus o en la penumbra del aula sin fatiga visual.
+            </p>
+            <span class="pillar-tag">High-Refresh Native Pipeline</span>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-card-accent"></div>
+            <div class="pillar-index">06 // IDENTIDAD & ORIGEN</div>
+            <h3 class="pillar-title">Ingeniería Forjada en Guerrero</h3>
+            <p class="pillar-desc">
+              Un producto conceptualizado, desarrollado y mantenido con devoción técnica por Ocelotl Studio en el estado de Guerrero, demostrando la capacidad de crear plataformas digitales con calado y madurez competitiva global.
+            </p>
+            <span class="pillar-tag">Ocelotl Studio Sovereign Code</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section: Interactive Product Tour / Gallery -->
+    <section class="section section-divider" id="galeria">
+      <div class="container">
+        
+        <div class="section-heading text-center">
+          <div class="section-kicker">
+            <span class="section-kicker-dot"></span>
+            <span>RECORRIDO TÉCNICO INTERACTIVO</span>
+          </div>
+          <h2 class="section-main-title">
+            Galería del sistema en funcionamiento
+          </h2>
+          <p class="section-lead-text">
+            Explora las pantallas reales de Kronex Academic OS tal como operan en dispositivos Android de producción.
+          </p>
+        </div>
+
+        <div class="tour-shell">
+          <!-- Switcher Buttons -->
+          <div class="tour-controls" role="tablist">
+            <button class="tour-tab-btn active" data-screen="today" role="tab" aria-selected="true">
+              01 • Vista Hoy
+            </button>
+            <button class="tour-tab-btn" data-screen="schedule" role="tab" aria-selected="false">
+              02 • Horario Semanal
+            </button>
+            <button class="tour-tab-btn" data-screen="scan" role="tab" aria-selected="false">
+              03 • Escaneo con IA (OCR)
+            </button>
+            <button class="tour-tab-btn" data-screen="tasks" role="tab" aria-selected="false">
+              04 • Tareas Contextuales
+            </button>
+            <button class="tour-tab-btn" data-screen="milestones" role="tab" aria-selected="false">
+              05 • Entregas & Exámenes
+            </button>
+          </div>
+
+          <!-- Screen Display & Info Pane -->
+          <div class="tour-viewport">
+            
+            <div class="tour-device-display">
+              <div class="tour-phone-chassis">
+                <div class="phone-notch">
+                  <span class="notch-mic"></span>
+                  <span class="notch-lens"></span>
+                </div>
+                
+                <img src="../assets/kronex/kronex-screen-today.jpg" alt="Vista Hoy Kronex" class="tour-screen-img active" data-screen="today">
+                <img src="../assets/kronex/kronex-screen-schedule.jpg" alt="Horario Semanal Kronex" class="tour-screen-img" data-screen="schedule">
+                <img src="../assets/kronex/kronex-screen-escaneo.jpeg" alt="Escaneo Inteligente Kronex" class="tour-screen-img" data-screen="scan">
+                <img src="../assets/kronex/kronex-screen-tareas.jpeg" alt="Gestor de Tareas Kronex" class="tour-screen-img" data-screen="tasks">
+                <img src="../assets/kronex/kronex-screen-entregas.jpeg" alt="Control de Entregas Kronex" class="tour-screen-img" data-screen="milestones">
+              </div>
+            </div>
+
+            <div class="tour-info-pane">
+              
+              <!-- Pane 1: Hoy -->
+              <div class="tour-pane-item active" data-screen="today">
+                <span class="tour-badge">Módulo 01 // TIEMPO PRESENTE</span>
+                <h3 class="tour-title">Vista "Hoy": Tu jornada académica en tiempo real</h3>
+                <p class="tour-desc">
+                  El tablero matutino que te recibe cada día. En un solo golpe de vista sabes qué clase tienes en este momento, cuánto tiempo resta para que termine y cuál es el próximo salón al que debes dirigirte.
+                </p>
+                <ul class="tour-features-list">
+                  <li><span class="tour-check-dot"></span> Indicador dinámico de estado: "En curso", "Próxima clase" y "Día finalizado".</li>
+                  <li><span class="tour-check-dot"></span> Resumen de tareas pendientes que vencen en el día.</li>
+                  <li><span class="tour-check-dot"></span> Diagnóstico matutino contextual elaborado por el asistente Kron.</li>
+                </ul>
+              </div>
+
+              <!-- Pane 2: Horario -->
+              <div class="tour-pane-item" data-screen="schedule">
+                <span class="tour-badge">Módulo 02 // MALLA SEMANAL</span>
+                <h3 class="tour-title">Horario inteligente con segmentación por días</h3>
+                <p class="tour-desc">
+                  Navegación ultra rápida entre los días de la semana con resaltado cromático por materia, detección de recesos entre horas libres y visualización limpia de salones y profesores.
+                </p>
+                <ul class="tour-features-list">
+                  <li><span class="tour-check-dot"></span> Códigos de color personalizables por asignatura.</li>
+                  <li><span class="tour-check-dot"></span> Segmentación de horas libres y periodos de receso.</li>
+                  <li><span class="tour-check-dot"></span> Actualización en tiempo real del bloque lectivo en curso.</li>
+                </ul>
+              </div>
+
+              <!-- Pane 3: Escaneo -->
+              <div class="tour-pane-item" data-screen="scan">
+                <span class="tour-badge">Módulo 03 // INTELIGENCIA ARTIFICIAL</span>
+                <h3 class="tour-title">Digitalización óptica de horarios físicos con IA</h3>
+                <p class="tour-desc">
+                  Basta de transcribir manualmente cada materia, día y hora. El motor de visión artificial de Kronex analiza la imagen de tu horario impreso o PDF, detecta los bloques lectivos y te entrega una propuesta lista para confirmar en segundos.
+                </p>
+                <ul class="tour-features-list">
+                  <li><span class="tour-check-dot"></span> Extracción de texto y segmentación tabular automática.</li>
+                  <li><span class="tour-check-dot"></span> Interfaz de revisión previa para corregir o validar datos antes de guardar.</li>
+                  <li><span class="tour-check-dot"></span> Procesamiento seguro sin intermediarios publicitarios.</li>
+                </ul>
+              </div>
+
+              <!-- Pane 4: Tareas -->
+              <div class="tour-pane-item" data-screen="tasks">
+                <span class="tour-badge">Módulo 04 // ASISTENCIA CONTEXTUAL</span>
+                <h3 class="tour-title">Tareas vinculadas a la frecuencia de tus clases</h3>
+                <p class="tour-desc">
+                  A diferencia de una lista de pendientes genérica, Kronex conoce los días en que tienes cada clase. Al asignar una tarea a una materia, el sistema te sugiere automáticamente el próximo día en que verás al docente.
+                </p>
+                <ul class="tour-features-list">
+                  <li><span class="tour-check-dot"></span> Sugerencia inteligente de fecha límite según el calendario de la materia.</li>
+                  <li><span class="tour-check-dot"></span> Clasificación por prioridad y estado de avance.</li>
+                  <li><span class="tour-check-dot"></span> Almacenamiento local persistente sin conexión a internet.</li>
+                </ul>
+              </div>
+
+              <!-- Pane 5: Entregas -->
+              <div class="tour-pane-item" data-screen="milestones">
+                <span class="tour-badge">Módulo 05 // CONTROL DE METAS</span>
+                <h3 class="tour-title">Monitoreo de exámenes, entregas y proyectos finales</h3>
+                <p class="tour-desc">
+                  Una vista consolidada para que ningún compromiso crítico te tome por sorpresa. Controla fechas de exámenes parciales, rúbricas de evaluación y proyectos semestrales con claridad absoluta.
+                </p>
+                <ul class="tour-features-list">
+                  <li><span class="tour-check-dot"></span> Separación clara entre tareas cotidianas y exámenes evaluativos.</li>
+                  <li><span class="tour-check-dot"></span> Cuenta regresiva de días restantes para entregas decisivas.</li>
+                  <li><span class="tour-check-dot"></span> Interfaz de alta legibilidad para reducir la ansiedad académica.</li>
+                </ul>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section: Meet Kron Companion -->
+    <section class="section section-divider" id="asistente-kron">
+      <div class="container">
+        
+        <div class="kron-assistant-card">
+          <div class="kron-assistant-layout">
+            
+            <div class="kron-visual-wrapper">
+              <div class="kron-avatar-glow" aria-hidden="true"></div>
+              <img src="../assets/kronex/kron-welcome.png" alt="Asistente Kron" class="kron-character-img">
+            </div>
+
+            <div class="kron-assistant-info">
+              <div class="section-kicker">
+                <span class="section-kicker-dot"></span>
+                <span>ASISTENTE VIRTUAL NATIVO</span>
+              </div>
+              <h2 class="section-main-title" style="margin-bottom: 16px;">
+                Conoce a Kron: El copiloto inteligente del estudiante
+              </h2>
+              <p class="section-lead-text">
+                En el núcleo de Kronex vive <strong>Kron</strong>, un asistente visual concebido para acompañar al estudiante a lo largo de su día sin resultar invasivo ni molesto.
+              </p>
+
+              <div class="kron-perks-list">
+                <div class="kron-perk-item">
+                  <div class="kron-perk-title">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <span>Orientación contextual y oportuna</span>
+                  </div>
+                  <p class="kron-perk-text">
+                    Te avisa con la debida anticipación cuándo debes salir hacia tu siguiente aula o qué tareas puedes adelantar durante un periodo de receso.
+                  </p>
+                </div>
+
+                <div class="kron-perk-item">
+                  <div class="kron-perk-title">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    <span>Estados anímicos según el ciclo lectivo</span>
+                  </div>
+                  <p class="kron-perk-text">
+                    Kron está enfocado durante las horas de clase, vigilante en semanas de exámenes y relajado durante los fines de semana o periodos vacacionales.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section: Technical Specifications & Installer Integrity -->
+    <section class="section section-divider" id="especificaciones">
+      <div class="container">
+        
+        <div class="section-heading text-center">
+          <div class="section-kicker">
+            <span class="section-kicker-dot"></span>
+            <span>FICHA TÉCNICA & ARQUITECTURA</span>
+          </div>
+          <h2 class="section-main-title">
+            Integridad técnica del software
+          </h2>
+          <p class="section-lead-text">
+            Transparencia total sobre los binarios, arquitectura de compilación y requisitos del sistema.
+          </p>
+        </div>
+
+        <div class="specs-shell">
+          
+          <div class="specs-table-wrapper">
+            <table class="specs-table">
+              <thead>
+                <tr>
+                  <th>PARÁMETRO</th>
+                  <th>ESPECIFICACIÓN OFICIAL</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="spec-name">Nombre del Sistema</td>
+                  <td class="spec-val">KRONEX ACADEMIC OS (Beta Pública)</td>
+                </tr>
+                <tr>
+                  <td class="spec-name">Estudio Desarrollador</td>
+                  <td class="spec-val"><strong>Ocelotl Studio</strong> (Guerrero, México)</td>
+                </tr>
+                <tr>
+                  <td class="spec-name">Autoría Técnica</td>
+                  <td class="spec-val">Nicolas Godinez Santana & Eduardo Godinez Santana</td>
+                </tr>
+                <tr>
+                  <td class="spec-name">Versión de Compilación</td>
+                  <td class="spec-val">0.5.0-beta10-dev (Release Estable)</td>
+                </tr>
+                <tr>
+                  <td class="spec-name">Identificador de Paquete</td>
+                  <td class="spec-val">com.kronexacademic.kronex.dev</td>
+                </tr>
+                <tr>
+                  <td class="spec-name">Arquitecturas Soportadas</td>
+                  <td class="spec-val">arm64-v8a, armeabi-v7a, x86_64</td>
+                </tr>
+                <tr>
+                  <td class="spec-name">Requisito Mínimo del SO</td>
+                  <td class="spec-val">Android 8.0 (Oreo) o superior</td>
+                </tr>
+                <tr>
+                  <td class="spec-name">Seguridad & Privacidad</td>
+                  <td class="spec-val">Cero publicidad, cero rastreadores comerciales, 100% de persistencia local</td>
+                </tr>
+                <tr>
+                  <td class="spec-name">Firma Criptográfica SHA-256</td>
+                  <td class="spec-val">
+                    <div class="checksum-container">
+                      <span id="checksumValue">78338f1de8fc4fec555a17bbe4f364bf197bb79b97d641a0c8b2cce331822906</span>
+                      <button class="btn-copy-hash" id="btnCopyChecksum" aria-label="Copiar Hash SHA-256">Copiar Hash</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Installation Guide Steps -->
+          <div class="install-steps-header" style="text-align: center; margin-top: 48px;">
+            <div class="section-kicker">GUÍA DE INSTALACIÓN RÁPIDA</div>
+            <h3 style="color: #FFFFFF; font-size: 1.5rem; margin-bottom: 8px;">Cómo instalar el APK oficial en 3 pasos</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem;">Proceso estándar para la instalación directa de la beta en cualquier teléfono Android.</p>
+          </div>
+
+          <div class="install-steps-grid">
+            <div class="install-step-box">
+              <div class="step-num-badge">1</div>
+              <h4 class="step-title">Descarga el APK</h4>
+              <p class="step-text">
+                Obtén el archivo oficial <code>KronexV1.apk</code> directamente desde el repositorio de Ocelotl Studio o desde este portal.
+              </p>
+            </div>
+
+            <div class="install-step-box">
+              <div class="step-num-badge">2</div>
+              <h4 class="step-title">Permite la instalación</h4>
+              <p class="step-text">
+                Si Android muestra la advertencia habitual sobre fuentes externas, pulsa en «Configuración» y activa «Permitir desde esta fuente».
+              </p>
+            </div>
+
+            <div class="install-step-box">
+              <div class="step-num-badge">3</div>
+              <h4 class="step-title">Inicia Kronex</h4>
+              <p class="step-text">
+                Presiona «Instalar», abre la app e ingresa tu horario manualmente o captúralo en 5 segundos con una sola fotografía.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section: Final Action Banner -->
+    <section class="section section-divider" id="descargas">
+      <div class="container">
+        
+        <div class="final-banner-shell">
+          <div class="section-kicker">DISTRIBUCIÓN OFICIAL DE SOFTWARE</div>
+          <h2 class="final-banner-title">
+            Comienza a organizar tu semestre con Kronex OS
+          </h2>
+          <p class="final-banner-lead">
+            Descarga la beta pública oficial desarrollada por Ocelotl Studio y experimenta el rigor de una arquitectura de software pensada para acompañarte hasta tu graduación.
+          </p>
+
+          <div class="final-actions-row">
+            <a href="https://github.com/N1CKGZ/kronex-releases/releases/download/v0.5.0-beta10/KronexV1.apk" class="btn btn-teal">
+              <svg class="icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Descargar APK Beta Oficial (Android 8.0+)</span>
+            </a>
+
+            <a href="https://kronexacademic.com" target="_blank" rel="noopener noreferrer" class="btn btn-glass">
+              <span>Sitio Web Oficial de Kronex ↗</span>
+            </a>
+
+            <a href="/" class="btn btn-subtle">
+              <span>← Volver al Portal de Ocelotl Studio</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-shell">
+      <div class="footer-grid">
+        
+        <div class="footer-brand-col">
+          <div class="footer-brand-header">
+            <img src="../assets/kronex/kronex-logo.png" alt="Kronex Academic OS" width="28" height="28" style="border-radius: 6px;">
+            <span class="footer-brand-title">KRONEX ACADEMIC OS</span>
+          </div>
+          <p class="footer-desc">
+            Sistema operativo académico personal diseñado y programado como producto insignia de <strong>Ocelotl Studio</strong>.
+          </p>
+
+          <div class="footer-creators-card">
+            <span class="creators-kicker">AUTORÍA DEL PROYECTO</span>
+            <div class="creators-content">
+              <span class="creators-lead">Creadores:</span> <strong>Nicolas Godinez Santana</strong> <span class="creators-sep">•</span> <strong>Eduardo Godinez Santana</strong>
+            </div>
+            <div class="creators-heritage">
+              Orgullosos del estado de Guerrero.
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-nav-col">
+          <span class="footer-col-title">Kronex OS</span>
+          <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#origen">Por qué se creó</a></li>
+            <li><a href="#pilares">Innovaciones</a></li>
+            <li><a href="#galeria">Galería del Sistema</a></li>
+            <li><a href="#asistente-kron">Asistente Kron</a></li>
+            <li><a href="#especificaciones">Ficha Técnica</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-nav-col">
+          <span class="footer-col-title">Ecosistema & Estudio</span>
+          <ul>
+            <li><a href="/">Portal Ocelotl Studio</a></li>
+            <li><a href="https://kronexacademic.com" target="_blank" rel="noopener">Sitio Oficial Kronex</a></li>
+            <li><a href="https://github.com/N1CKGZ/kronex-releases" target="_blank" rel="noopener">Repositorio en GitHub</a></li>
+            <li><a href="https://github.com/N1CKGZ/kronex-releases/issues" target="_blank" rel="noopener">Reportar Error o Feedback</a></li>
+            <li><a href="/#contacto">Contacto con el Estudio</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div class="copyright-text">
+          © <span id="currentYear">2026</span> KRONEX ACADEMIC OS • Producto desarrollado por Ocelotl Studio.
+        </div>
+        <div class="footer-creators-bar">
+          Creadores: <span>Nicolas Godinez Santana</span> • <span>Eduardo Godinez Santana</span> — Orgullosos del estado de Guerrero
+        </div>
+        <div class="footer-legal">
+          Tecnología de autor. Desplegado en infraestructura global de alta disponibilidad.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
