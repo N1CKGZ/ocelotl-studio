@@ -68,6 +68,12 @@
   padding: 0;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 html {
   font-family: var(--font-sans);
   font-size: 16px;
